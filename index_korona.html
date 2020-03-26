@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>blabla</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <style>
+        .legend {
+            background-color: #1c1c1c;
+            text-align: left;
+            border-radius: 3px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            font: 12px/20px 'RedRing', Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            color: #E0FFFF;
+            padding: 10px;
+            position: absolute;
+            top: 20px;
+
+            z-index: 1;
+        }
+
+            .legend h4 {
+                margin: 30px 30px 10px;
+            }
+            .legend h3 {
+                margin: 30px 30px 30px;
+                font: 30px 'RedRing', Arial, Helvetica, sans-serif;
+                color: #fe0505;
+            }
+
+            .legend div {
+
+                border-radius: 50%;
+
+                height: 10px;
+                margin-right: 5px;
+                width: 10px;
+            }
+    </style>
+
+    <style>
+        .mapboxgl-popup {
+            max-width: 400px;
+            font: 12px/20px 'RedRing', Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+
+    <div id="map"></div>
+
+    <div id="state-legend" class="legend">
+        <h4>Количество заражённых COVID-19 в мире</h4>
+        <span><h4>Всего:</h4></span> <span><h3>41 9302</h3></span>
+    </div>
+
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaXJhZCIsImEiOiJjanVjdTE0YzgwaXhtNDNwZG9sNWt5eGl3In0.51FlFPCOJBznfpPRscP05A';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/irad/ck87k1rwe0xpk1inmngyd5vow',
+            center: [0, 0],
+            minZoom: 2,
+            maxZoom: 3,
+            zoom: 1
+        });
+
+        map.on('load', function () {
+
+            map.addSource('blockooo', {
+                type: 'vector',
+                url: 'mapbox://irad.11f3x5jl'
+            });
+
+            map.addLayer({
+                'id': 'blocks',
+                'type': 'fill',
+                'source': 'blockooo',
+                'source-layer': 'test-53n96m',
+                'paint': {
+                    'fill-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'Cases_2503'],
+                        0,
+                        '#43393b',
+                        1,
+                        '#5d4345',
+                        20,
+                        '#a15b5c',
+                        300, 
+                        '#c16364',
+                        4500, 
+                        '#eb5a5a',
+                        81218,
+                        '#fe0505'
+                    ],
+                    'fill-opacity': 0.75
+                }
+            });
+
+            map.addLayer({
+                'id': 'blocksx',
+                'type': 'symbol',
+                'source': 'blockooo',
+                'source-layer': 'test-53n96m',
+                 paint: {
+                    "text-color": "#ffffff"
+                 }
+            });
+
+            map.setLayoutProperty('blocksx', 'text-field', [
+                'format',
+                ['get', 'alpha_3'],
+                {
+                    'font-scale': 1.0,
+                },
+                               
+            ]);
+
+            map.setPaintProperty('blocksx', 'text-opacity', .6);
+
+            var popup = new mapboxgl.Popup({
+                closeButton: false,
+                closeOnClick: false
+
+            });
+
+            map.on('mousemove', 'blocks', function (e) {
+
+                map.getCanvas().style.cursor = 'pointer';
+
+                var coordinates = e.features[0].geometry.coordinates.slice();
+                var description = e.features[0].properties["corona_c_1"] + " <br/>"
+                var description2 = e.features[0].properties["Cases_2503"]
+                if (description2 == 1000) { description2 = 'no data' }
+                popup.setLngLat(e.lngLat).setHTML(description + description2).addTo(map);
+
+            });
+
+            map.on('mouseleave', 'blocks', function () {
+                map.getCanvas().style.cursor = '';
+                popup.remove();
+            });
+
+
+        });
+
+
+    </script>
+
+</body>
+</html>
