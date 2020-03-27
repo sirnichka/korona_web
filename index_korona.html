@@ -26,73 +26,65 @@
     <style>
 
 
-
-        .white_source {
-            margin: 20px 30px 0px;
+        .main_head {
+            padding: 0px 30px;
             text-align: left;
-            font: 25px 'RedRing', Arial, Helvetica, sans-serif;
-            color: #E0FFFF;
-            padding: 10px;
-            position: absolute;
-            bottom: 0px;
-            left: 300px;
-            z-index: 1;
-        }
-        .white_source_yesterday {
-            margin: 20px 30px 0px;
-            text-align: left;
-            font: 25px 'RedRing', Arial, Helvetica, sans-serif;
-            color: #E0FFFF;
-            padding: 10px;
-            position: absolute;
-            bottom: 0px;
-            z-index: 1;
-        }
-
-        .legend {
-            margin: 30px 30px 30px;
-            text-align: left;
-            border-radius: 3px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
             font: 30px 'RedRing', Arial, Helvetica, sans-serif;
             color: #E0FFFF;
-            padding: 10px;
+            background-color: #30303b;
             position: absolute;
-            bottom: 100px;
-            z-index: 1;
+            top: 0px;
+            left: 40%;
+ 
         }
 
-        .red {
-            margin: 30px 30px 30px;
+        .table_full {
+            left: 40%;
+            position: absolute;
+            bottom: 50px;
+            background-color: #30303b;
+        }
+        .table_red {
+            margin: 10px 10px 0px;
             text-align: left;
-            border-radius: 3px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            font: 35px 'RedRing', Arial, Helvetica, sans-serif;
-            color: #fe0505;
-            padding: 10px;
-            position: absolute;
-            bottom: 10px;
-            left: 300px;
+            font: 70px 'RedRing', Arial, Helvetica, sans-serif;
+            color: #fdfc4c;
+            padding: 10px 30px;
+            position: relative;
+            font-weight: bold;
+            bottom: 0px;
             z-index: 1;
         }
-        .pink {
-            margin: 30px 30px 30px;
+
+
+        .table_pink {
+            margin: 10px 10px 0px;
             text-align: left;
-            border-radius: 3px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            font: 25px 'RedRing', Arial, Helvetica, sans-serif;
-            color: #eb5a5a;
-            padding: 10px;
-            position: absolute;
-            bottom: 27px;
-
+            font: 60px 'RedRing', Arial, Helvetica, sans-serif;
+            color: #a7a613;
+            padding: 10px 30px;
+            font-weight: bold;
+            position: relative;
             z-index: 1;
         }
 
-        .keka {
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+        .table_date {
+            margin: 0px 0px 0px;
+            text-align: left;
+            font: 17px 'RedRing', Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            padding: 10px 30px;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+
+        .popup_back {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
             font: 20px 'RedRing', Arial, Helvetica, sans-serif;
-            color: #fe0505;
+            font-weight: bold;
+            color: #fdfc4c;
             text-align: center;
         }
     </style>
@@ -107,7 +99,7 @@
         }
 
         .mapboxgl-popup-content {
-            background-color: rgba(1,1,1,0.5);
+            background-color: rgba(1,1,1,0.8);
         }
 
         body {
@@ -124,28 +116,28 @@
     </style>
 
 
+
     <div id="map"></div>
 
-    <div class="legend">
+    <div class="main_head">
         <h3>Количество заражённых COVID-19 в мире</h3>
     </div>
 
+    <table class="table_full">
+        <tr>
+            <th class="table_pink">419 302</th>
+            <th class="table_red">476 817</th>
+        </tr>
+        <tr>
+            <td class="table_date">25 марта 2020</td>
+            <td class="table_date">26 марта 2020</td>
+        </tr>
 
-    <div class="red">
-        <h2>476 817</h2>
-    </div>
-
-    <div class="pink">
-        <h2>419 302</h2>
-    </div>
+    </table>
 
 
-    <div class="white_source">
-        <h6>26 марта 2020</h6>
-    </div>
-    <div class="white_source_yesterday">
-        <h6>25 марта 2020</h6>
-    </div>
+
+
 
 
 
@@ -155,9 +147,9 @@
             container: 'map',
             style: 'mapbox://styles/irad/ck87k1rwe0xpk1inmngyd5vow',
             center: [0, 10],
-            minZoom: 2,
+            minZoom: 1,
             maxZoom: 4,
-            zoom: 2.2
+            zoom: 2.1
         });
 
         map.on('load', function () {
@@ -178,19 +170,17 @@
                         ['linear'],
                         ['get', '2603_'],
                         0,
-                        '#43393b',
+                        '#4d4d5c',
                         1,
-                        '#5d4345',
-                        20,
-                        '#a15b5c',
+                        '#78773f',
                         300,
-                        '#c16364',
+                        '#a7a613',
                         4500,
-                        '#eb5a5a',
+                        '#d5d200',
                         81218,
-                        '#fe0505'
+                        '#fffd4e'
                     ],
-                    'fill-opacity': 0.75
+
                 }
             });
 
@@ -200,7 +190,7 @@
                 'source': 'blockooo',
                 'source-layer': '2603_3857-4zl4c4',
                 paint: {
-                    "text-color": "#ffffff"
+                    "text-color": "#111111"
                 }
             });
 
@@ -208,12 +198,12 @@
                 'format',
                 ['get', 'alpha_3'],
                 {
-                    'font-scale': 1.0,
+                    'font-scale': 0.9,
                 },
 
             ]);
 
-            map.setPaintProperty('blocksx', 'text-opacity', .6);
+            map.setPaintProperty('blocksx', 'text-opacity', .9);
 
             var popup = new mapboxgl.Popup({
                 closeButton: false,
@@ -228,7 +218,7 @@
                 var coordinates = e.features[0].geometry.coordinates.slice();
                 var description = e.features[0].properties["name"] + "&nbsp"
                 var description2 = e.features[0].properties["2603_"]
-                popup.setLngLat(e.lngLat).setHTML(description + "<div class=\"keka\">" + description2 + "</div>").addTo(map);
+                popup.setLngLat(e.lngLat).setHTML(description + "<div class=\"popup_back\">" + description2 + "</div>").addTo(map);
 
             });
 
