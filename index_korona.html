@@ -14,6 +14,7 @@
         body {
             margin: 0;
             padding: 0;
+            background-color: #30303b;
         }
 
         #map {
@@ -21,63 +22,76 @@
             top: 0;
             bottom: 0;
             width: 100%;
+            height: 80%;
         }
     </style>
     <style>
 
 
         .main_head {
-            padding: 0px 30px;
+            height: 12%;
+           margin: 0px 0px 0px;
             text-align: left;
             font: 30px 'RedRing', Arial, Helvetica, sans-serif;
             color: #E0FFFF;
-            background-color: #30303b;
+
             position: absolute;
-            top: 0px;
-            left: 40%;
- 
+            bottom: 8%;
+            left: 30%;
         }
 
         .table_full {
-            left: 40%;
+            left: 30%;
             position: absolute;
-            bottom: 50px;
-            background-color: #30303b;
+            bottom: 2%;
+
+
         }
+
         .table_red {
-            margin: 10px 10px 0px;
+
             text-align: left;
             font: 70px 'RedRing', Arial, Helvetica, sans-serif;
             color: #fdfc4c;
-            padding: 10px 30px;
+
             position: relative;
             font-weight: bold;
             bottom: 0px;
             z-index: 1;
+            padding:  0px 0px 0px 50px;
         }
 
 
         .table_pink {
-            margin: 10px 10px 0px;
             text-align: left;
             font: 60px 'RedRing', Arial, Helvetica, sans-serif;
             color: #a7a613;
-            padding: 10px 30px;
             font-weight: bold;
             position: relative;
             z-index: 1;
         }
 
 
-        .table_date {
+        .table_date1 {
             margin: 0px 0px 0px;
             text-align: left;
             font: 17px 'RedRing', Arial, Helvetica, sans-serif;
             color: #ffffff;
-            padding: 10px 30px;
             font-weight: bold;
             position: relative;
             z-index: 1;
+
+        }
+
+            .table_date2 {
+            margin: 0px 0px 0px;
+            text-align: left;
+            font: 17px 'RedRing', Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            padding:  0px 0px 0px 50px;
         }
 
         .popup_back {
@@ -90,7 +104,6 @@
     </style>
 
     <style>
-
         .mapboxgl-popup {
             max-width: 400px;
             font: 20px 'RedRing', Arial, Helvetica, sans-serif;
@@ -109,7 +122,7 @@
 
         #map {
             position: absolute;
-            top: 0;
+            top: 50px;
             bottom: 0;
             width: 100%;
         }
@@ -129,8 +142,8 @@
             <th class="table_red">476 817</th>
         </tr>
         <tr>
-            <td class="table_date">25 марта 2020</td>
-            <td class="table_date">26 марта 2020</td>
+            <td class="table_date1">25 марта 2020</td>
+            <td class="table_date2">26 марта 2020</td>
         </tr>
 
     </table>
