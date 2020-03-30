@@ -151,12 +151,12 @@
 
     <table class="table_full">
         <tr>
-            <th class="table_pink">419 302</th>
-            <th class="table_red">476 817</th>
+            <th class="table_pink">701 377</th>
+            <th class="table_red">711 015</th>
         </tr>
         <tr>
-            <td class="table_date1">25.03.2020</td>
-            <td class="table_date2">26.03.2020</td>
+            <td class="table_date1">29.03.2020</td>
+            <td class="table_date2">30.03.2020</td>
         </tr>
 
     </table>
@@ -185,14 +185,14 @@
 
             map.addSource('blockooo', {
                 type: 'vector',
-                url: 'mapbox://irad.1vgp4c20'
+                url: 'mapbox://irad.22yeq6rk'
             });
 
             map.addLayer({
                 'id': 'blocks',
                 'type': 'fill',
                 'source': 'blockooo',
-                'source-layer': '2603_3857-4zl4c4',
+                'source-layer': 'korona_blocks_3003-bk8zy3',
                 'paint': {
                     'fill-color': [
                         'interpolate',
@@ -206,9 +206,10 @@
                         '#a7a613',
                         4500,
                         '#d5d200',
-                        81218,
+                        138645,
                         '#fffd4e'
                     ],
+
 
                 }
             });
@@ -217,7 +218,7 @@
                 'id': 'blocksx',
                 'type': 'symbol',
                 'source': 'blockooo',
-                'source-layer': '2603_3857-4zl4c4',
+                'source-layer': 'korona_blocks_3003-bk8zy3',
                 paint: {
                     "text-color": "#111111"
 
@@ -248,7 +249,7 @@
 
                 var coordinates = e.features[0].geometry.coordinates.slice();
                 var description = e.features[0].properties["name"] + "&nbsp"
-                var description2 = e.features[0].properties["2603_"]
+                var description2 = e.features[0].properties["cases_3003"]
                 popup.setLngLat(e.lngLat).setHTML(description + "<div class=\"popup_back\">" + description2 + "</div>").addTo(map);
 
             });
