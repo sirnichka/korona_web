@@ -197,7 +197,7 @@
                     'fill-color': [
                         'interpolate',
                         ['linear'],
-                        ['get', '2603_'],
+                        ['get', 'korona_cas'],
                         0,
                         '#4d4d5c',
                         1,
@@ -206,8 +206,10 @@
                         '#a7a613',
                         4500,
                         '#d5d200',
-                        138645,
-                        '#fffd4e'
+                        100000,
+                        '#fffd4e',
+                        500000,
+                        '#ffffff'
                     ],
 
 
@@ -249,7 +251,7 @@
 
                 var coordinates = e.features[0].geometry.coordinates.slice();
                 var description = e.features[0].properties["name"] + "&nbsp"
-                var description2 = e.features[0].properties["cases_3003"]
+                var description2 = e.features[0].properties["korona_cas"]
                 popup.setLngLat(e.lngLat).setHTML(description + "<div class=\"popup_back\">" + description2 + "</div>").addTo(map);
 
             });
