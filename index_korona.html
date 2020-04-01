@@ -154,26 +154,65 @@
 
     <table class="table_full">
         <tr>
-            <th class="table_pink">782376</th>
-            <th class="table_red">821143</th>
+            <th class="table_pink">--/--</th>
+            <th class="table_red">--/--</th>
         </tr>
         <tr>
-            <td class="table_date1">31.03.2020</td>
-            <td class="table_date2">01.04.2020</td>
+            <td class="table_date1">--/--</td>
+            <td class="table_date2">--/--</td>
         </tr>
 
     </table>
 
-
-
     <div class="source">
-        Источник данных: bnonews.com
+        Источник данных: worldometers.info
     </div>
     <div class="source_emg">
         <a href="http://emg.tv/maps.html">Отдел телекартографии ООО «ЕМГ»</a>
     </div>
 
     <script>
+		
+		var fixName = {
+		
+			'USA':'United States',
+			'UK':'United Kingdom',
+			'S. Korea':'South Korea',
+			'Czechia':'Czech Republic',
+			'UAE':'United Arab Emirates',
+			//{'Hong Kong':''}, //прибавить к china
+			'Bosnia and Herzegovina':'Bosnia',
+			//{'Taiwan':''}, //прибавить к china
+			'DRC':'DR Congo',
+			//{'Macao':''}, //прибавить к china
+			'Congo':'Congo Republic',
+			'Saint Kitts and Nevis':'St. Kitts and Nevis',
+			'Cabo Verde':'Cape Verde',
+			'Gambia':'The Gambia',
+			'CAR':'Central African Republic',
+			'St. Vincent Grenadines':'Saint Vincent and the Grenadines',
+		}
+		
+		var expression = ['match', ['get', 'country']];
+		
+		var totalCasesToday = 0;
+		var casesYesterday = 0
+		var totalCases = 0
+		
+		
+		var dataTotal = []
+		var data = []
+
+		fetch("https://corona.lmao.ninja/all").then(response => response.json()).then(function(answer){
+			dataTotal = answer
+		})
+		
+		fetch("https://corona.lmao.ninja/countries").then(response => response.json()).then(function(answer){
+			data = answer
+		})
+		
+setTimeout(function(){ // Delay
+
         mapboxgl.accessToken = 'pk.eyJ1IjoiaXJhZCIsImEiOiJjanVjdTE0YzgwaXhtNDNwZG9sNWt5eGl3In0.51FlFPCOJBznfpPRscP05A';
         var map = new mapboxgl.Map({
             container: 'map',
@@ -184,39 +223,72 @@
             zoom: 1.8
 
         });
-
-        map.on('load', function () {
+		
+		var intensy = 0.01
+		var maxval = 180000 * intensy //TODO: сорт массива
+		
+        map.on('load', function () {  // EVENT
 
             map.addSource('blockooo', {
                 type: 'vector',
-                url: 'mapbox://irad.2qa4nvr1'
+                url: 'mapbox://irad.2f49vb6j'
+            });
+			
+			data.forEach(function(row) {
+			
+				totalCasesToday = totalCasesToday + row['todayCases']
+				totalCases = totalCases + row['cases']
+				
+				if(fixName[row['country']]){
+			
+					row['country']=fixName[row['country']]
+			
+				}
+				
+				if(row['cases']>=1){
+					
+					var red = ((row['cases'] / maxval) * 220) + 120;
+					var green = ((row['cases'] / maxval) * 220) + 119;
+					var blue = (row['cases'] / maxval) + 62;
+					var color = 'rgba(' + red + ', ' + green + ', ' + blue + ', 1)';
+					
+					expression.push(row['country'], color);
+				}
+				else
+				{
+					
+					expression.push(row['country'], 'rgba(1,1,1,1)');
+				}
+			});
+			
+			casesYesterday = totalCases - totalCasesToday
+			
+			
+			document.getElementsByClassName('table_pink').item(0).textContent = casesYesterday
+			document.getElementsByClassName('table_red').item(0).textContent = totalCases
+			
+			document.getElementsByClassName('table_date1').item(0).textContent = new Date(Date.now()-8640000).toLocaleString().split(',')[0]
+			document.getElementsByClassName('table_date2').item(0).textContent = new Date(Date.now()).toLocaleString().split(',')[0]
+			
+			expression.push('rgba(0,0,0,0)');
+		
+            map.addLayer({
+                'id': 'blocks_black',
+                'type': 'fill',
+                'source': 'blockooo',
+                'source-layer': 'korona_blocks_country-743ln7',
+                'paint': {
+                    'fill-color': 'rgba(77,77,97,1)',
+                }
             });
 
             map.addLayer({
-                'id': 'blocks',
+                'id': 'blocks_main',
                 'type': 'fill',
                 'source': 'blockooo',
-                'source-layer': 'korona_blocks_or_web-9jl5bh',
+                'source-layer': 'korona_blocks_country-743ln7',
                 'paint': {
-                    'fill-color': [
-                        'interpolate',
-                        ['linear'],
-                        ['get', 'korona_cas'],
-                        0,
-                        '#4d4d5c',
-                        1,
-                        '#78773f',
-                        300,
-                        '#a7a613',
-                        4500,
-                        '#d5d200',
-                        100000,
-                        '#fffd4e',
-                        500000,
-                        '#ffffff'
-                    ],
-
-
+                    'fill-color': expression,
                 }
             });
 
@@ -224,7 +296,7 @@
                 'id': 'blocksx',
                 'type': 'symbol',
                 'source': 'blockooo',
-                'source-layer': 'korona_blocks_or_web-9jl5bh',
+                'source-layer': 'korona_blocks_country-743ln7',
                 paint: {
                     "text-color": "#111111"
 
@@ -241,39 +313,51 @@
 
             ]);
       
-                setInterval(function(){
+            setInterval(function(){ //UPDATE LAYER
       
-            map.setLayoutProperty('blocksx', 'text-field', [
-                'format',
-                ['get', 'alpha_3'],
-                {
-                    'font-scale': map.getZoom()*0.4,
+				map.setLayoutProperty('blocksx', 'text-field', [
+					'format',
+					['get', 'alpha_3'],
+					{
+						'font-scale': map.getZoom()*0.4,
 
-                },
+					},
 
-            ]);
+				]);
       
-      }, 50);
+			}, 50);
+	  
             map.setPaintProperty('blocksx', 'text-opacity', .9);
 
+			// POPUP ->
             var popup = new mapboxgl.Popup({
                 closeButton: false,
                 closeOnClick: false
-
             });
 
-            map.on('mousemove', 'blocks', function (e) {
+            map.on('mousemove', 'blocks_main', function (e) {
 
                 map.getCanvas().style.cursor = 'pointer';
 
                 var coordinates = e.features[0].geometry.coordinates.slice();
-                var description = e.features[0].properties["name"] + "&nbsp"
-                var description2 = e.features[0].properties["korona_cas"]
+                    description = e.features[0].properties["name"] + "&nbsp"
+					description2 = '';
+					
+				data.forEach(function(row) {
+					
+					if(row['country']==e.features[0].properties['country']){
+						
+						description2 = row['cases']
+					
+					}
+				
+				});
+					
                 popup.setLngLat(e.lngLat).setHTML(description + "<div class=\"popup_back\">" + description2 + "</div>").addTo(map);
 
             });
 
-            map.on('mouseleave', 'blocks', function () {
+            map.on('mouseleave', 'blocks_main', function () {
                 map.getCanvas().style.cursor = '';
                 popup.remove();
             });
@@ -281,7 +365,7 @@
 
         });
 
-
+	}, 200);
     </script>
 
 </body>
