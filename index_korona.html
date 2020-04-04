@@ -236,8 +236,9 @@ setTimeout(function(){ // Delay
 			
 			data.forEach(function(row) {
 			
-				totalCasesToday = totalCasesToday + row['todayCases']
-				totalCases = totalCases + row['cases']
+				if(row['country']!='World'){
+					totalCasesToday = totalCasesToday + row['todayCases']
+				}
 				
 				if(fixName[row['country']]){
 			
@@ -261,8 +262,8 @@ setTimeout(function(){ // Delay
 				}
 			});
 			
+			totalCases = dataTotal['cases']
 			casesYesterday = totalCases - totalCasesToday
-			
 			
 			document.getElementsByClassName('table_pink').item(0).textContent = casesYesterday
 			document.getElementsByClassName('table_red').item(0).textContent = totalCases
