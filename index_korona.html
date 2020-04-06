@@ -17,127 +17,48 @@
             margin: 0;
             padding: 0;
             background-color: #181824;
-            margin: 0;
-            padding: 0;
         }
-
+        .main_head {
+            font: 18px 'Futura New', Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            position: absolute;
+            overflow: auto;
+            top: 5px;
+            right: 5px;
+            white-space: nowrap;
+        }
         .background_line {
-            width: 100%;
-            height: 27%;
+            width: 385px;
+            height: 135px;
             position: absolute;
             top: 0px;
             background-color: rgba(1,1,1,0.5);
-        }
-
-        .main_head {
-            font: 20px 'Futura New', Arial, Helvetica, sans-serif;
-            color: #ffffff;
-            position: absolute;
-            top: 15px;
-            overflow: auto;
-            margin-left: 50%;
-            transform: translate(-50%, -50%);
-            white-space: nowrap;
+            right: 0px;
         }
 
 
         .table_full {
-            top: 70px;
-            height: 20%;
-            margin-left: 50%;
-            transform: translate(-50%, -50%);
-            position: relative;
-        }
-        /* The switch - the box around the slider */
-        .switch {
-            top: 50px;
-            position: relative;
-            width: 60px;
-            height: 34px;
-            margin-left: 50px;
-        }
-
-            /* Hide default HTML checkbox */
-            .switch input {
-                opacity: 0;
-                width: 0;
-                height: 0;
-            }
-
-        /* The slider */
-        .slider {
+            top: 0px;
+            right: 50px;
             position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #272738;
-            -webkit-transition: .4s;
-            transition: .4s;
+            padding: 30px 0px 20px 0px;
         }
 
-            .slider:before {
-                position: absolute;
-                content: "";
-                height: 26px;
-                width: 26px;
-                left: 4px;
-                bottom: 4px;
-                background-color: #ffffff;
-                -webkit-transition: .4s;
-                transition: .4s;
-            }
-
-        input:checked + .slider {
-            background-color: #ff536f;
-        }
-
-        input:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-
-        #sliderTextRight {
-            font: 20px 'Futura New', Arial, Helvetica, sans-serif;
+        .table_today {
             text-align: left;
-            width: 200px;
-            color: #E0FFFF;
-            margin-left: 130%;
-            top: 4px;
-            position: absolute;
-        }
-
-        #sliderTextLeft {
-            font: 20px 'Futura New', Arial, Helvetica, sans-serif;
-            text-align: left;
-            width: 200px;
-            color: #E0FFFF;
-            margin-left: -270%;
-            top: 4px;
-            position: absolute;
-        }
-
-        .table_red {
-            text-align: left;
-            font: 45px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 30px 'Futura New', Arial, Helvetica, sans-serif;
             font-weight: bold;
             color: #fdfc4c;
             position: relative;
             text-align: left;
-            padding: 0px 0px 0px 50px;
+            padding: 0px 0px 0px 45px;
         }
 
 
-        .table_pink {
+        .table_yesterday {
             text-align: left;
             font-weight: bold;
-            font: 27px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 20px 'Futura New', Arial, Helvetica, sans-serif;
             font-weight: bold;
             color: #ffffff;
             position: relative;
@@ -147,7 +68,7 @@
 
         .table_date1 {
             text-align: left;
-            font: 20px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
             color: #ffffff;
             position: relative;
             text-align: left;
@@ -155,7 +76,7 @@
 
         .table_date2 {
             text-align: left;
-            font: 20px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
             color: #ffffff;
             position: relative;
             text-align: left;
@@ -170,7 +91,7 @@
 
 
         .source {
-            font: 18px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
             color: #ffffff;
             position: fixed;
             width: 100%;
@@ -193,12 +114,12 @@
             }
 
         .source_emg {
-            font: 18px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
             color: #ffffff;
             position: fixed;
             width: 100%;
             text-align: left;
-            bottom: 55px;
+            bottom: 50px;
             left: 10px;
             overflow: auto
         }
@@ -208,7 +129,7 @@
         /* POPUP MENU*/
         .popup_back {
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-            font: 20px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 16px 'Futura New', Arial, Helvetica, sans-serif;
             font-weight: bold;
             color: #ffffff;
             text-align: left;
@@ -216,7 +137,7 @@
 
         .mapboxgl-popup {
             max-width: 1200px;
-            font: 20px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 16px 'Futura New', Arial, Helvetica, sans-serif;
             text-align: left;
             color: #fdfc4c;
         }
@@ -226,13 +147,13 @@
         }
 
         .popupSmallText {
-            font: 15px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 16px 'Futura New', Arial, Helvetica, sans-serif;
             font-weight: normal;
             color: #ffffff;
         }
 
         .popupSmallTextRecovered {
-            font: 15px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 16px 'Futura New', Arial, Helvetica, sans-serif;
             color: #65c326;
         }
 
@@ -242,12 +163,33 @@
     </style>
 
     <style>
+        .fullscreen_but {
+            font-family: Lucida Console, Courier New, Courier, monospace;
+            font: Lucida Console;
+            font-weight: bold;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            white-space: nowrap;
+            display: inline-block;
+            margin: 0px;
+            padding: 13px 11px 11px 8px; /*Ширина*/
+            margin-bottom: 0;
+            font-size: 25px;
+            line-height: 20px;
+            color: rgba(255,255,255,0.9);
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            background-color: rgba(0,0,0,0.6);
+
+            border: 1px solid rgba(0,0,0,1);
+        }
 
         .radioButton {
             position: absolute;
-            margin-top: 50px;
-            margin-left: 50%;
-            transform: translate(-50%, -50%);
+            right: 0px;
+            top: 100px;
             white-space: nowrap;
         }
 
@@ -257,42 +199,60 @@
 
             input[type=radio] + label {
                 display: inline-block;
-                margin: -2px;
+                margin: 0px;
                 padding: 4px 8px; /*Ширина*/
                 margin-bottom: 0;
                 font-size: 14px;
                 line-height: 20px;
-                color: #333;
+                color: rgba(255,255,255,0.6);
                 text-align: center;
-                text-shadow: 0 1px 1px rgba(255,255,255,0.75);
                 vertical-align: middle;
                 cursor: pointer;
-                background-color: #f5f5f5;
-                background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
-                background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
-                background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
-                background-image: -o-linear-gradient(top,#fff,#e6e6e6);
-                background-image: linear-gradient(to bottom,#fff,#e6e6e6);
-                background-repeat: repeat-x;
-                border: 1px solid #ccc;
-                border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-                border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
-                border-bottom-color: #b3b3b3;
+                background-color: rgba(0,0,0,0.8);
                 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
                 filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-                -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
-                -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
-                box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+                border: 1px solid rgba(0,0,0,1);
             }
 
-            input[type=radio]:checked + label {
-                background-image: none;
-                outline: 0;
-                -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                background-color: #e0e0e0;
-            }
+        #radio1:checked + label {
+            background-image: none;
+            outline: 0;
+            color: #fdfc4c;
+            -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        #radio2:checked + label {
+            background-image: none;
+            outline: 0;
+            color: #fdfc4c;
+            -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        #radio3:checked + label {
+            background-image: none;
+            outline: 0;
+            color: #ff756b;
+            -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        #radio4:checked + label {
+            background-image: none;
+            outline: 0;
+            color: #6eff64;
+            -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            background-color: rgba(0,0,0,0.9);
+        }
     </style>
 
 
@@ -300,14 +260,15 @@
 
     <div class="background_line"></div>
 
+
     <div class="main_head">
-        <h5>КОЛИЧЕСТВО ЗАРАЖЁННЫХ COVID-19&nbsp;В МИРЕ</h5>
+        КОЛИЧЕСТВО ЗАРАЖЁННЫХ COVID-19&nbsp;В МИРЕ
     </div>
 
     <table class="table_full">
         <tr>
-            <th class="table_pink">--/--</th>
-            <th class="table_red">--/--</th>
+            <th class="table_yesterday">--/--</th>
+            <th class="table_today">--/--</th>
         </tr>
         <tr>
             <td class="table_date1">--/--</td>
@@ -320,26 +281,17 @@
         <input type="radio" id="radio1" name="radios" onclick="main(false,true,this);" value="1" checked>
         <label for="radio1">Заражения</label>
         <input type="radio" id="radio2" name="radios" onclick="main(false,true,this);" value="2">
-        <label for="radio2">Заражения на 1млн</label>
+        <label for="radio2">Заражения на 1 млн</label>
         <input type="radio" id="radio3" name="radios" onclick="main(false,true,this);" value="3">
         <label for="radio3">Смерти</label>
         <input type="radio" id="radio4" name="radios" onclick="main(false,true,this);" value="4">
         <label for="radio4">Излечились</label>
+
+
     </div>
+    <button class="fullscreen_but" data-toggle-fullscreen>[ ]</button>
 
 
-
-    <!-- Rectangular switch 
-
-    <div class="switch">
-        <label>
-            <div id="sliderTextRight">на 1 млн жителей</div>
-            <input type="checkbox">
-            <span class="slider">
-            </span>
-        </label>
-    </div>
-    -->
     <div class="source">
         Источник данных: worldometers.info
     </div>
@@ -348,9 +300,31 @@
     </div>
 
 
-
-
     <script>
+
+        document.addEventListener('click', function (event) {
+
+            // игнорирование событий, которые произошли не на данной кнопке
+            if (!event.target.hasAttribute('data-toggle-fullscreen')) return;
+
+        }, false);
+
+
+
+        document.addEventListener('click', function (event) {
+
+            // игнорирование событий, которые произошли не на данной кнопке
+            if (!event.target.hasAttribute('data-toggle-fullscreen')) return;
+
+            // если элемент уже в полноэкранном режиме, выйти из него
+            // В противном случае войти в полный экран
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                document.documentElement.requestFullscreen();
+            }
+
+        }, false);
 
         let fixName = {
             'USA': 'United States',
@@ -371,9 +345,9 @@
             'Libyan Arab Jamahiriya': 'Libya',
             'Tanzania, United Republic of': 'Tanzania',
             'Swaziland': 'Eswatini',
-            'Moldova, Republic of': 'Moldova', 
+            'Moldova, Republic of': 'Moldova',
             'Syrian Arab Republic': 'Syria',
-            "Lao People's Democratic Republic" : 'Laos',
+            "Lao People's Democratic Republic": 'Laos',
         }
 
         let fixCount = {
@@ -456,7 +430,7 @@
 
                     cases_fillColorsExp.push(i['country'], 'rgba(' + (((i['cases'] / (data[0]['cases'] * intensy)) * 180) + 110) + ', ' + (((i['cases'] / (data[0]['cases'] * intensy)) * 180) + 110) + ', ' + ((i['cases'] / (data[0]['cases'] * intensy)) + 100) + ', 1)');
                     casesPerMill_fillColorsExp.push(i['country'], 'rgba(' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * intensy)) * 10) + 110) + ', ' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * intensy)) * 10) + 110) + ', ' + ((i['casesPerOneMillion'] / (casesPerOneMillMax * intensy)) + 100) + ', 1)');
-                    deaths_fillColorsExp.push(i['country'], 'rgba(' + (((i['deaths'] / (deathsMax * 0.1)) * 255) + 110) + ', ' + (((i['deaths'] / (deathsMax * 0.1)) * 1) + 110) + ', ' + (((i['deaths'] / (deathsMax * 0.1))*1) + 100) + ', 1)');
+                    deaths_fillColorsExp.push(i['country'], 'rgba(' + (((i['deaths'] / (deathsMax * 0.1)) * 255) + 110) + ', ' + (((i['deaths'] / (deathsMax * 0.1)) * 1) + 110) + ', ' + (((i['deaths'] / (deathsMax * 0.1)) * 1) + 100) + ', 1)');
                     recovered_fillColorsExp.push(i['country'], 'rgba(' + (((i['recovered'] / (recoveredMax * 0.05)) * 1) + 110) + ', ' + (((i['recovered'] / (recoveredMax * 0.05)) * 250) + 110) + ', ' + (((i['recovered'] / (recoveredMax * 0.05)) * 1) + 100) + ', 1)');
                 });
 
@@ -471,7 +445,7 @@
                     center: [0, 25],
                     minZoom: 1,
                     maxZoom: 4,
-                    zoom: 2
+                    zoom: 1.9
                 });
 
                 map.on('load', function () {  // EVENT
@@ -613,19 +587,19 @@
                         });
 
                         htmlContainer = `<div class=\"popup_back\">${countryName}</div>
-                                                                                                                                                    <table class="pupupTable">
-                                                                                                                                                    <tr class="popupLargeText"><th>заражений</th></tr>
-                                                                                                                                                    <tr class="popupSmallText"><th>всего: </th><th>${cursor_totalCases}</th></tr>
-                                                                                                                                                    <tr class="popupSmallText"><th>сегодня: </th><th>${cursor_todayCases}</th></tr>
-                                                                                                                                                    <tr class="popupSmallText"><th>На 1 млн: </th><th>${cursor_casesPerOneMillion}</th></tr>
-                                                                                                                                                    <tr><th> </th></tr>
-                                                                                                                                                    <tr><th> </th></tr>
-                                                                                                                                                    <tr class="popupLargeTextDeaths"><th>смертей</th></tr>
-                                                                                                                                                    <tr class="popupSmallText"><th>всего: </th><th>${cursor_totalDeaths}</th></tr>
-                                                                                                                                                    <tr class="popupSmallText"><th>сегодня: </th><th>${cursor_todayDeaths}</th></tr>
-                                                                                                                                                    <tr><th></th></tr>
-                                                                                                                                                    <tr class="popupSmallTextRecovered"><th>Излечились: </th><th>${cursor_recovered}</th></tr>
-                                                                                                                                                    </table>`
+                    <table class="pupupTable">
+                    <tr class="popupLargeText"><th>заражений</th></tr>
+                    <tr class="popupSmallText"><th>всего: </th><th>${cursor_totalCases}</th></tr>
+                    <tr class="popupSmallText"><th>сегодня: </th><th>${cursor_todayCases}</th></tr>
+                    <tr class="popupSmallText"><th>на 1 млн: </th><th>${cursor_casesPerOneMillion}</th></tr>
+                    <tr><th> </th></tr>
+                    <tr><th> </th></tr>
+                    <tr class="popupLargeTextDeaths"><th>смертей</th></tr>
+                    <tr class="popupSmallText"><th>всего: </th><th>${cursor_totalDeaths}</th></tr>
+                    <tr class="popupSmallText"><th>сегодня: </th><th>${cursor_todayDeaths}</th></tr>
+                    <tr><th></th></tr>
+                    <tr class="popupSmallTextRecovered"><th>Излечились: </th><th>${cursor_recovered}</th></tr>
+                    </table>`
 
 
 
@@ -677,8 +651,8 @@
 
             }
             else {
-                document.getElementsByClassName('table_pink').item(0).textContent = totalCases - totalCasesToday
-                document.getElementsByClassName('table_red').item(0).textContent = totalCases
+                document.getElementsByClassName('table_yesterday').item(0).textContent = totalCases - totalCasesToday
+                document.getElementsByClassName('table_today').item(0).textContent = totalCases
                 document.getElementsByClassName('table_date1').item(0).textContent = new Date(Date.now() - 86400000).toLocaleString().split(',')[0]
                 document.getElementsByClassName('table_date2').item(0).textContent = new Date(Date.now()).toLocaleString().split(',')[0]
             }
