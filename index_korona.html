@@ -435,8 +435,8 @@
                     totalCases = totalCases + i['cases']
                     totalCasesToday = totalCasesToday + i['todayCases']
 
-                    cases_fillColorsExp.push(i['country'], 'rgba(' + (((i['cases'] / (data[0]['cases'] * intensy)) * 180) + 110) + ', ' + (((i['cases'] / (data[0]['cases'] * intensy)) * 180) + 110) + ', ' + ((i['cases'] / (data[0]['cases'] * intensy)) + 100) + ', 1)');
-                    casesPerMill_fillColorsExp.push(i['country'], 'rgba(' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * intensy)) * 10) + 110) + ', ' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * intensy)) * 10) + 110) + ', ' + ((i['casesPerOneMillion'] / (casesPerOneMillMax * intensy)) + 100) + ', 1)');
+                    cases_fillColorsExp.push(i['country'], 'rgba(' + (((i['cases'] / (data[0]['cases'] * 0.5)) * 10) + 110) + ', ' + (((i['cases'] / (data[0]['cases'] * 0.5)) * 10) + 110) + ', ' + ((i['cases'] / (data[0]['cases'] * 10)) + 100) + ', 1)');
+                    casesPerMill_fillColorsExp.push(i['country'], 'rgba(' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.01)) * 10) + 110) + ', ' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.01)) * 10) + 110) + ', ' + ((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.01)) + 100) + ', 1)');
                     deaths_fillColorsExp.push(i['country'], 'rgba(' + (((i['deaths'] / (deathsMax * 0.1)) * 255) + 110) + ', ' + (((i['deaths'] / (deathsMax * 0.1)) * 1) + 110) + ', ' + (((i['deaths'] / (deathsMax * 0.1)) * 1) + 100) + ', 1)');
                     recovered_fillColorsExp.push(i['country'], 'rgba(' + (((i['recovered'] / (recoveredMax * 0.05)) * 1) + 110) + ', ' + (((i['recovered'] / (recoveredMax * 0.05)) * 250) + 110) + ', ' + (((i['recovered'] / (recoveredMax * 0.05)) * 1) + 100) + ', 1)');
                 });
