@@ -395,7 +395,7 @@
         async function main(firstRun, isEvent, eventHandler) {
 
             if (firstRun) {
-                data = await fetch('https://sirnichka.github.io/korona_backup/countries.json').then(response => response.json());
+                data = await fetch('https://sirnichka.github.io/korona_web/countries.json').then(response => response.json());
                 //dataTotal = await fetch('https://corona.lmao.ninja/all').then(response => response.json());
 
                 casesMaxValue = data[0].cases * intensy
