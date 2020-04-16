@@ -9,665 +9,777 @@
     <link href="fonts/futura/stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 
-    <body>
+<body>
 
-        <style>
 
-            body {
-                font-family: 'Futura New';
-                margin: 0;
-                padding: 0;
-                background-color: #181824;
+    <style>
+
+        body {
+            font-family: 'Futura New';
+            margin: 0;
+            padding: 0;
+            background-color: #181824;
+        }
+
+        .main_head {
+            font: 18px 'Futura New', Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            position: absolute;
+            right: 0px;
+            overflow: auto;
+            top: 17px;
+            font-weight: bold;
+            white-space: nowrap;
+            background-color: rgba(1,1,1,0.7);
+            padding: 5px 10px 5px 10px;
+        }
+
+        .table_full {
+            top: 65px;
+
+            position: absolute;
+            padding: 0px 0px 20px 0px;
+        }
+
+        .table_cases {
+            font: 30px 'Futura New', Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: #fdfc4c;
+            position: relative;
+            text-align: right;
+            vertical-align:text-bottom;
+            padding: 0px 0px 0px 30px;
+        }
+        .table_death {
+            font: 30px 'Futura New', Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: red;
+            position: relative;
+            text-align: right;
+            vertical-align:text-bottom;
+            padding: 0px 0px 0px 30px;
+        }
+
+        .table_date2 {
+            text-align: center;
+            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            position: relative;
+            padding: 0px 0px 0px 5px;
+            vertical-align: text-bottom;
+        }
+
+        .table_txt {
+            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
+            color: white;
+            padding-right: 5px;
+            vertical-align: text-bottom;
+            padding: 0px 0px 0px 10px;
+        }
+
+        .tablegrad {
+            color: white;
+            top: 110px;
+            position: relative;
+            margin-left: 0%;
+            transform: translate(-50%, -50%,);
+            padding: 10px;
+        }
+
+        .grad {
+            background-image: linear-gradient(90deg, rgba(110,110,100,1), yellow);
+            width: 350px;
+        }
+
+        .gradtxtleft {
+            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
+            color: white;
+            padding-right: 5px
+        }
+
+        .gradtxright {
+            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
+            color: white;
+            padding-left: 5px;
+            padding-right: 5px
+        }
+
+        #map {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .source {
+            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            position: fixed;
+            width: 100%;
+            text-align: left;
+            bottom: 30px;
+            left: 10px;
+            overflow: auto
+        }
+
+        A {
+            color: #ffffff; /* Цвет ссылок */
+        }
+
+            A:visited {
+                color: #ffffff; /* Цвет посещенных ссылок */
             }
 
-            .main_head {
-                font: 18px 'Futura New', Arial, Helvetica, sans-serif;
-                color: #ffffff;
-                position: absolute;
-                overflow: auto;
-                top: 5px;
-                right: 5px;
-                white-space: nowrap;
+            A:active {
+                color: #fdfc4c; /* Цвет активных ссылок */
             }
 
-            .background_line {
-                width: 385px;
-                height: 135px;
-                position: absolute;
-                top: 0px;
-                background-color: rgba(1,1,1,0.5);
-                right: 0px;
-            }
+        .source_emg {
+            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            position: fixed;
+            width: 100%;
+            text-align: left;
+            bottom: 50px;
+            left: 10px;
+            overflow: auto
+        }
+    </style>
 
+    <style>
+        /* POPUP MENU*/
+        .popup_back {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+            font: 16px 'Futura New', Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: left;
+        }
 
-            .table_full {
-                top: 0px;
-                right: 50px;
-                position: absolute;
-                padding: 30px 0px 20px 0px;
-            }
+        .mapboxgl-popup {
+            max-width: 1200px;
+            font: 16px 'Futura New', Arial, Helvetica, sans-serif;
+            text-align: left;
+            color: #fdfc4c;
+        }
 
-            .table_today {
-                text-align: left;
-                font: 30px 'Futura New', Arial, Helvetica, sans-serif;
-                font-weight: bold;
-                color: #fdfc4c;
-                position: relative;
-                text-align: left;
-                padding: 0px 0px 0px 45px;
-            }
+        .mapboxgl-popup-content {
+            background-color: rgba(1,1,1,0.8);
+        }
 
+        .popupSmallText {
+            font: 16px 'Futura New', Arial, Helvetica, sans-serif;
+            font-weight: normal;
+            color: #ffffff;
+        }
 
-            .table_yesterday {
-                text-align: left;
-                font-weight: bold;
-                font: 20px 'Futura New', Arial, Helvetica, sans-serif;
-                font-weight: bold;
-                color: #ffffff;
-                position: relative;
-                text-align: left;
-            }
+        .popupSmallTextRecovered {
+            font: 16px 'Futura New', Arial, Helvetica, sans-serif;
+            color: #65c326;
+        }
 
+        .popupLargeTextDeaths {
+            color: #a03f29;
+        }
+    </style>
 
-            .table_date1 {
-                text-align: left;
-                font: 14px 'Futura New', Arial, Helvetica, sans-serif;
-                color: #ffffff;
-                position: relative;
-                text-align: left;
-            }
+    <style>
+        .fullscreen_but {
+            background-color: rgba(24, 24, 36, 0);
+            font-family: Lucida Console, Courier New, Courier, monospace;
+            font: Lucida Console;
+            font-weight: bold;
+            position: absolute;
+            bottom: 10px;
+            right: 1px;
+            white-space: nowrap;
+            display: inline-block;
+            font-size: 20px;
+            line-height: 20px;
+            color: #ffffff;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            z-index: 999;
+            border: 0px solid rgba(0,0,0,0);
+        }
 
-            .table_date2 {
-                text-align: left;
-                font: 14px 'Futura New', Arial, Helvetica, sans-serif;
-                color: #ffffff;
-                position: relative;
-                text-align: left;
-                padding: 0px 0px 0px 50px;
-            }
+        .radioButton {
+            position: absolute;
+            right: 7px;
+            top: 35px;
+            white-space: nowrap;
+        }
 
-            #map {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-            }
+        input[type=radio] {
+            display: none;
+        }
 
-
-            .source {
-                font: 14px 'Futura New', Arial, Helvetica, sans-serif;
-                color: #ffffff;
-                position: fixed;
-                width: 100%;
-                text-align: left;
-                bottom: 30px;
-                left: 10px;
-                overflow: auto
-            }
-
-            A {
-                color: #ffffff; /* Цвет ссылок */
-            }
-
-                A:visited {
-                    color: #ffffff; /* Цвет посещенных ссылок */
-                }
-
-                A:active {
-                    color: #fdfc4c; /* Цвет активных ссылок */
-                }
-
-            .source_emg {
-                font: 14px 'Futura New', Arial, Helvetica, sans-serif;
-                color: #ffffff;
-                position: fixed;
-                width: 100%;
-                text-align: left;
-                bottom: 50px;
-                left: 10px;
-                overflow: auto
-            }
-        </style>
-
-        <style>
-            /* POPUP MENU*/
-            .popup_back {
-                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-                font: 16px 'Futura New', Arial, Helvetica, sans-serif;
-                font-weight: bold;
-                color: #ffffff;
-                text-align: left;
-            }
-
-            .mapboxgl-popup {
-                max-width: 1200px;
-                font: 16px 'Futura New', Arial, Helvetica, sans-serif;
-                text-align: left;
-                color: #fdfc4c;
-            }
-
-            .mapboxgl-popup-content {
-                background-color: rgba(1,1,1,0.8);
-            }
-
-            .popupSmallText {
-                font: 16px 'Futura New', Arial, Helvetica, sans-serif;
-                font-weight: normal;
-                color: #ffffff;
-            }
-
-            .popupSmallTextRecovered {
-                font: 16px 'Futura New', Arial, Helvetica, sans-serif;
-                color: #65c326;
-            }
-
-            .popupLargeTextDeaths {
-                color: #a03f29;
-            }
-        </style>
-
-        <style>
-            .fullscreen_but {
-                font-family: Lucida Console, Courier New, Courier, monospace;
-                font: Lucida Console;
-                font-weight: bold;
-                position: absolute;
-                bottom: 10px;
-                right: 10px;
-                white-space: nowrap;
+            input[type=radio] + label {
                 display: inline-block;
                 margin: 0px;
-                padding: 8px 8px 8px 8px; /*Ширина*/
+                padding: 2px 4px; /*Ширина*/
                 margin-bottom: 0;
-                font-size: 20px;
+                font-size: 13.5px;
                 line-height: 20px;
-                color: rgba(255,255,255,0.9);
+                color: rgba(255,255,255,0.6);
                 text-align: center;
                 vertical-align: middle;
                 cursor: pointer;
-                background-color: rgba(0,0,0,0.6);
+                background-color: rgba(0,0,0,0.8);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+                filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
                 z-index: 999;
-                border: 1px solid rgba(0,0,0,1);
             }
 
-            .radioButton {
+        #radio1:checked + label {
+            background-image: none;
+            outline: 0;
+            color: black;
+            -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3),0 1px 2px rgba(0,0,0,0.05);
+            background-color: #fdfc4c;
+        }
+
+        #radio2:checked + label {
+            background-image: none;
+            outline: 0;
+            color: black;
+            -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3),0 1px 2px rgba(0,0,0,0.05);
+            background-color: #fdfc4c;
+        }
+
+        #radio3:checked + label {
+            background-image: none;
+            outline: 0;
+            color: black;
+            -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3),0 1px 2px rgba(0,0,0,0.05);
+            background-color: #ff756b;
+        }
+
+        #radio4:checked + label {
+            background-image: none;
+            outline: 0;
+            color: black;
+            -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3),0 1px 2px rgba(0,0,0,0.05);
+            background-color: #6eff64;
+        }
+    </style>
+
+    <style>
+        /* гамбургер */
+        /* скрываем чекбокс */
+        #menu__toggle {
+            opacity: 0;
+        }
+        /* стилизуем кнопку */
+        .menu__btn {
+            display: flex; /* используем flex для центрирования содержимого */
+            align-items: center; /* центрируем содержимое кнопки */
+            position: fixed;
+            top: 50px;
+            right: 309px;
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+            z-index: 1;
+            background-color: rgba(1,1,1,0.7);
+        }
+            /* добавляем "гамбургер" */
+            .menu__btn > span,
+            .menu__btn > span::before,
+            .menu__btn > span::after {
+                display: block;
                 position: absolute;
-                right: 0px;
-                top: 100px;
-                white-space: nowrap;
+                width: 100%;
+                height: 2px;
+                background-color: #ffffff;
             }
 
-            input[type=radio] {
-                display: none;
-            }
-
-                input[type=radio] + label {
-                    display: inline-block;
-                    margin: 0px;
-                    padding: 4px 8px; /*Ширина*/
-                    margin-bottom: 0;
-                    font-size: 14px;
-                    line-height: 20px;
-                    color: rgba(255,255,255,0.6);
-                    text-align: center;
-                    vertical-align: middle;
-                    cursor: pointer;
-                    background-color: rgba(0,0,0,0.8);
-                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
-                    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-                    border: 1px solid rgba(0,0,0,1);
+                .menu__btn > span::before {
+                    content: '';
+                    top: -8px;
                 }
 
-            #radio1:checked + label {
-                background-image: none;
-                outline: 0;
-                color: #fdfc4c;
-                -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                background-color: rgba(0,0,0,0.9);
-            }
+                .menu__btn > span::after {
+                    content: '';
+                    top: 8px;
+                }
+    </style>
 
-            #radio2:checked + label {
-                background-image: none;
-                outline: 0;
-                color: #fdfc4c;
-                -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                background-color: rgba(0,0,0,0.9);
-            }
+    <style>
+        /* контейнер меню */
+        .menu__box {
+            display: block;
+            position: fixed;
+            visibility: hidden;
+            margin: 0;
+            padding: 0px 0px 0px 0px;
+            list-style: none;
+            text-align: center;
+            width: 346px;
+            height: 160px;
+            top: 46px;
+            background-color: rgba(1,1,1,0.7);
+            
+            right: 0px;
+        }
+    </style>
+    <style>
+        #menu__toggle:checked ~ .menu__btn > span {
+        }
 
-            #radio3:checked + label {
-                background-image: none;
-                outline: 0;
-                color: #ff756b;
-                -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                background-color: rgba(0,0,0,0.9);
-            }
+        #menu__toggle:checked ~ .menu__box {
+            visibility: visible;
+            right: 0;
+        }
+    </style>
 
-            #radio4:checked + label {
-                background-image: none;
-                outline: 0;
-                color: #6eff64;
-                -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-                background-color: rgba(0,0,0,0.9);
-            }
-        </style>
+    <div id="map"></div>
 
-        <div id="map"></div>
+    <div class="main_head">
+        РАСПРОСТРАНЕНИЕ COVID-19&nbsp;В МИРЕ
+    </div>
+    <div class="hamburger-menu">
+        <input id="menu__toggle" type="checkbox" />
+        <label class="menu__btn" for="menu__toggle">
+            <span></span>
+        </label>
+        <div class="menu__box">
+            <div class="radioButton">
+                <input type="radio" id="radio1" name="radios" onclick="main(false,true,this);" value="1" checked>
+                <label for="radio1">Заражения</label>
+                <input type="radio" id="radio2" name="radios" onclick="main(false,true,this);" value="2">
+                <label for="radio2">Заражения на 1 млн</label>
+                <input type="radio" id="radio3" name="radios" onclick="main(false,true,this);" value="3">
+                <label for="radio3">Смерти</label>
+                <input type="radio" id="radio4" name="radios" onclick="main(false,true,this);" value="4">
+                <label for="radio4">Излечились</label>
+            </div>
 
-        <div class="background_line"></div>
+            <table class="tablegrad">
+                <tr>
+                    <th class="gradtxtleft">min</th>
+                    <th class="grad"></th>
+                    <th class="gradtxright">max</th>
+                </tr>
+            </table>
+
+            <table class="table_full">
+                <tr>
+                    <td class="table_txt">Всего&nbsp;на</td>
+                    <td class="table_date2">--/--</td>
+                    <th class="table_cases">--/--</th>
+                </tr>
 
 
-        <div class="main_head">
-            КОЛИЧЕСТВО ЗАРАЖЁННЫХ COVID-19&nbsp;В МИРЕ
-        </div>
+            </table>
 
-        <table class="table_full">
-            <tr>
-                <th class="table_yesterday">--/--</th>
-                <th class="table_today">--/--</th>
-            </tr>
-            <tr>
-                <td class="table_date1">--/--</td>
-                <td class="table_date2">--/--</td>
-            </tr>
 
-        </table>
 
-        <div class="radioButton">
-            <input type="radio" id="radio1" name="radios" onclick="main(false,true,this);" value="1" checked>
-            <label for="radio1">Заражения</label>
-            <input type="radio" id="radio2" name="radios" onclick="main(false,true,this);" value="2">
-            <label for="radio2">Заражения на 1 млн</label>
-            <input type="radio" id="radio3" name="radios" onclick="main(false,true,this);" value="3">
-            <label for="radio3">Смерти</label>
-            <input type="radio" id="radio4" name="radios" onclick="main(false,true,this);" value="4">
-            <label for="radio4">Излечились</label>
 
 
         </div>
         <button class="fullscreen_but" onclick="toggleFull();">[ ]</button>
-
-
         <div class="source">
             Источник данных: worldometers.info
         </div>
+
         <div class="source_emg">
             <a href="http://emg.tv/maps.html" target="_blank">Отдел телекартографии ООО «ЕМГ»</a>
         </div>
 
-    <script>
+        <script>
 
-        function cancelFullScreen(el) {
-            var requestMethod = el.cancelFullScreen||el.webkitCancelFullScreen||el.mozCancelFullScreen||el.exitFullscreen;
-            if (requestMethod) {
-                requestMethod.call(el);
-            } else if (typeof window.ActiveXObject !== "undefined") {
-                var wscript = new ActiveXObject("WScript.Shell");
-                if (wscript !== null) {
-                    wscript.SendKeys("{F11}");
+            function cancelFullScreen(el) {
+                var requestMethod = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullscreen;
+                if (requestMethod) {
+                    requestMethod.call(el);
+                } else if (typeof window.ActiveXObject !== "undefined") {
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
                 }
             }
-        }
 
-        function requestFullScreen(el) {
-            
-            var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+            function requestFullScreen(el) {
 
-            if (requestMethod) {
-                requestMethod.call(el);
-            } else if (typeof window.ActiveXObject !== "undefined") {
-                var wscript = new ActiveXObject("WScript.Shell");
-                if (wscript !== null) {
-                    wscript.SendKeys("{F11}");
+                var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+
+                if (requestMethod) {
+                    requestMethod.call(el);
+                } else if (typeof window.ActiveXObject !== "undefined") {
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
                 }
+                return false
             }
-            return false
-        }
 
-        function toggleFull() {
-            var elem = document.documentElement;
-            var isInFullScreen = (document.fullScreenElement && document.fullScreenElement !== null) ||  (document.mozFullScreen || document.webkitIsFullScreen);
+            function toggleFull() {
+                var elem = document.documentElement;
+                var isInFullScreen = (document.fullScreenElement && document.fullScreenElement !== null) || (document.mozFullScreen || document.webkitIsFullScreen);
 
-            if (isInFullScreen) {
-                cancelFullScreen(document);
-            } else {
-                requestFullScreen(elem);
+                if (isInFullScreen) {
+                    cancelFullScreen(document);
+                } else {
+                    requestFullScreen(elem);
+                }
+                return false;
             }
-            return false;
-        }
-        
 
-        let fixName = {
-            'USA': 'United States',
-            'UK': 'United Kingdom',
-            'S. Korea': 'South Korea',
-            'Czechia': 'Czech Republic',
-            'UAE': 'United Arab Emirates',
-            'Bosnia and Herzegovina': 'Bosnia',
-            'DRC': 'DR Congo',
-            'Congo': 'Congo Republic',
-            'Saint Kitts and Nevis': 'St. Kitts and Nevis',
-            'Cabo Verde': 'Cape Verde',
-            'Gambia': 'The Gambia',
-            'CAR': 'Central African Republic',
-            'St. Vincent Grenadines': 'Saint Vincent and the Grenadines',
-            'Macedonia': 'North Macedonia',
-            "Côte d'Ivoire": 'Ivory Coast',
-            'Libyan Arab Jamahiriya': 'Libya',
-            'Tanzania, United Republic of': 'Tanzania',
-            'Swaziland': 'Eswatini',
-            'Moldova, Republic of': 'Moldova',
-            'Syrian Arab Republic': 'Syria',
-            "Lao People's Democratic Republic": 'Laos',
-        }
 
-        let fixCount = {
-            'Hong Kong': 1,
-            'Taiwan': 1,
-            'Macao': 1,
-        }
+            let fixName = {
+                'USA': 'United States',
+                'UK': 'United Kingdom',
+                'S. Korea': 'South Korea',
+                'Czechia': 'Czech Republic',
+                'UAE': 'United Arab Emirates',
+                'Bosnia and Herzegovina': 'Bosnia',
+                'DRC': 'DR Congo',
+                'Congo': 'Congo Republic',
+                'Saint Kitts and Nevis': 'St. Kitts and Nevis',
+                'Cabo Verde': 'Cape Verde',
+                'Gambia': 'The Gambia',
+                'CAR': 'Central African Republic',
+                'St. Vincent Grenadines': 'Saint Vincent and the Grenadines',
+                'Macedonia': 'North Macedonia',
+                "Côte d'Ivoire": 'Ivory Coast',
+                'Libyan Arab Jamahiriya': 'Libya',
+                'Tanzania, United Republic of': 'Tanzania',
+                'Swaziland': 'Eswatini',
+                'Moldova, Republic of': 'Moldova',
+                'Syrian Arab Republic': 'Syria',
+                "Lao People's Democratic Republic": 'Laos',
+            }
 
-        const _token = 'pk.eyJ1IjoiaXJhZCIsImEiOiJjanVjdTE0YzgwaXhtNDNwZG9sNWt5eGl3In0.51FlFPCOJBznfpPRscP05A';
-        const _sourceLayer = 'korona_blocks_country-743ln7';
-        const _mapSourceUrl = 'mapbox://irad.2f49vb6j'
+            let fixCount = {
+                'Hong Kong': 1,
+                'Taiwan': 1,
+                'Macao': 1,
+            }
 
-        let cases_fillColorsExp = ['match', ['get', 'country']];
-        let casesPerMill_fillColorsExp = ['match', ['get', 'country']];
-        let deaths_fillColorsExp = ['match', ['get', 'country']];
-        let recovered_fillColorsExp = ['match', ['get', 'country']];
-        let totalCasesToday = 0;
-        let totalCases = 0;
-        let intensy = 0.02;
-        let fixChina = 0;
-        let casesMaxValue = 0;
-        let casesPerOneMillMax = 0;
-        let deathsMax = 0;
-        let recoveredMax = 0;
-        let data = [];
-        let map;
+            const _token = 'pk.eyJ1IjoiaXJhZCIsImEiOiJjanVjdTE0YzgwaXhtNDNwZG9sNWt5eGl3In0.51FlFPCOJBznfpPRscP05A';
+            const _sourceLayer = 'korona_blocks_country-743ln7';
+            const _mapSourceUrl = 'mapbox://irad.2f49vb6j'
 
-        async function main(firstRun, isEvent, eventHandler) {
+            let cases_fillColorsExp = ['match', ['get', 'country']];
+            let casesPerMill_fillColorsExp = ['match', ['get', 'country']];
+            let deaths_fillColorsExp = ['match', ['get', 'country']];
+            let recovered_fillColorsExp = ['match', ['get', 'country']];
+            let totalCasesToday = 0;
+            let totalCases = 0;
+            let intensy = 0.02;
+            let fixChina = 0; 
+            let casesMaxValue = 0;
+            let casesPerOneMillMax = 0;
+            let deathsMax = 0;
+            let recoveredMax = 0;
+            let data = [];
+            let dataTotal = [];
+            let map;
 
-            if (firstRun) {
-                data = await fetch('https://corona.lmao.ninja/countries').then(response => response.json());
-                //dataTotal = await fetch('https://corona.lmao.ninja/all').then(response => response.json());
+            async function main(firstRun, isEvent, eventHandler) {
 
-                casesMaxValue = data[0].cases * intensy
+                if (firstRun) {
+                    data = await fetch('https://corona.lmao.ninja/countries').then(response => response.json());
+                    dataTotal = await fetch('https://corona.lmao.ninja/all').then(response => response.json());
 
-                mapboxgl.accessToken = _token;
+                    casesMaxValue = data[0].cases * intensy
 
-                data.forEach(function (i) {
+                    mapboxgl.accessToken = _token;
 
-                    if (fixCount[i['country']]) {
-                        fixChina = fixChina + i['cases']
-                    }
+                    data.forEach(function (i) {
 
-                    if (i['casesPerOneMillion'] > casesPerOneMillMax) {
-                        casesPerOneMillMax = i['casesPerOneMillion']
-                    }
-
-                    if (i['deaths'] > deathsMax) {
-                        deathsMax = i['deaths']
-                    }
-
-                    if (i['recovered'] > recoveredMax) {
-                        recoveredMax = i['recovered']
-                    }
-
-                });
-
-                data.forEach(function (i) {
-
-                    if (fixName[i['country']]) {
-                        i['country'] = fixName[i['country']]
-                    }
-
-                    if (i['country'] === 'China') {
-                        i['cases'] = i['cases'] + fixChina
-                    }
-
-                    totalCases = totalCases + i['cases']
-                    totalCasesToday = totalCasesToday + i['todayCases']
-
-                    cases_fillColorsExp.push(i['country'], 'rgba(' + (((i['cases'] / (data[0]['cases'] * 0.5)) * 10) + 110) + ', ' + (((i['cases'] / (data[0]['cases'] * 0.5)) * 10) + 110) + ', ' + ((i['cases'] / (data[0]['cases'] * 10)) + 100) + ', 1)');
-                    casesPerMill_fillColorsExp.push(i['country'], 'rgba(' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.01)) * 10) + 110) + ', ' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.01)) * 10) + 110) + ', ' + ((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.01)) + 100) + ', 1)');
-                    deaths_fillColorsExp.push(i['country'], 'rgba(' + (((i['deaths'] / (deathsMax * 0.1)) * 255) + 110) + ', ' + (((i['deaths'] / (deathsMax * 0.1)) * 1) + 110) + ', ' + (((i['deaths'] / (deathsMax * 0.1)) * 1) + 100) + ', 1)');
-                    recovered_fillColorsExp.push(i['country'], 'rgba(' + (((i['recovered'] / (recoveredMax * 0.05)) * 1) + 110) + ', ' + (((i['recovered'] / (recoveredMax * 0.05)) * 250) + 110) + ', ' + (((i['recovered'] / (recoveredMax * 0.05)) * 1) + 100) + ', 1)');
-                });
-
-                cases_fillColorsExp.push('rgba(0,0,0,0)');
-                casesPerMill_fillColorsExp.push('rgba(0,0,0,0)');
-                deaths_fillColorsExp.push('rgba(0,0,0,0)');
-                recovered_fillColorsExp.push('rgba(0,0,0,0)');
-
-                map = new mapboxgl.Map({
-                    container: 'map',
-                    style: 'mapbox://styles/irad/ck87k1rwe0xpk1inmngyd5vow',
-                    center: [0, 25],
-                    minZoom: 1,
-                    maxZoom: 4,
-                    zoom: 1.9
-                });
-
-                map.on('load', function () {  // EVENT
-
-                    map.addSource('mapMain', {
-                        type: 'vector',
-                        url: _mapSourceUrl
-                    });
-
-                    map.addLayer({
-                        'id': 'blocks_black',
-                        'type': 'fill',
-                        'source': 'mapMain',
-                        'source-layer': _sourceLayer,
-                        'paint': {
-                            'fill-color': 'rgba(77,77,97,1)',
+                        if (fixCount[i['country']]) {
+                            fixChina = fixChina + i['cases']
                         }
-                    });
 
-                    map.addLayer({
-                        'id': 'cases_BlocksFillColorLayer',
-                        'type': 'fill',
-                        'source': 'mapMain',
-                        'source-layer': _sourceLayer,
-                        'paint': {
-                            'fill-color': cases_fillColorsExp,
+                        if (i['casesPerOneMillion'] > casesPerOneMillMax) {
+                            casesPerOneMillMax = i['casesPerOneMillion']
                         }
-                    });
 
-                    map.addLayer({
-                        'id': 'casesPerMill_BlocksFillColorLayer',
-                        'type': 'fill',
-                        'source': 'mapMain',
-                        'source-layer': _sourceLayer,
-                        'paint': {
-                            'fill-color': casesPerMill_fillColorsExp,
+                        if (i['deaths'] > deathsMax) {
+                            deathsMax = i['deaths']
                         }
-                    });
 
-                    map.addLayer({
-                        'id': 'deaths_BlocksFillColorLayer',
-                        'type': 'fill',
-                        'source': 'mapMain',
-                        'source-layer': _sourceLayer,
-                        'paint': {
-                            'fill-color': deaths_fillColorsExp,
+                        if (i['recovered'] > recoveredMax) {
+                            recoveredMax = i['recovered']
                         }
+
                     });
 
-                    map.addLayer({
-                        'id': 'recovered_BlocksFillColorLayer',
-                        'type': 'fill',
-                        'source': 'mapMain',
-                        'source-layer': _sourceLayer,
-                        'paint': {
-                            'fill-color': recovered_fillColorsExp,
+                    data.forEach(function (i) {
+
+                        if (fixName[i['country']]) {
+                            i['country'] = fixName[i['country']]
                         }
-                    });
 
-                    map.setLayoutProperty('casesPerMill_BlocksFillColorLayer', 'visibility', 'none');
-                    map.setLayoutProperty('deaths_BlocksFillColorLayer', 'visibility', 'none');
-                    map.setLayoutProperty('recovered_BlocksFillColorLayer', 'visibility', 'none');
-
-                    map.addLayer({
-                        'id': 'blocksx',
-                        'type': 'symbol',
-                        'source': 'mapMain',
-                        'source-layer': _sourceLayer,
-                        'paint': {
-                            "text-color": "#111111"
+                        if (i['country'] === 'China') {
+                            i['cases'] = i['cases'] + fixChina
                         }
+
+                        totalCases = totalCases + i['cases']
+                        totalCasesToday = totalCasesToday + i['todayCases']
+
+                        cases_fillColorsExp.push(i['country'], 'rgba(' + (((i['cases'] / (data[0]['cases'] * 1)) * 10) + 100) + ', ' + (((i['cases'] / (data[0]['cases'] * 1)) * 10) + 100) + ', ' + 100 + ', 1)');
+                        casesPerMill_fillColorsExp.push(i['country'], 'rgba(' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.01)) * 10) + 100) + ', ' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.01)) * 10) + 100) + ', '+ 100 + ', 1)');
+                        deaths_fillColorsExp.push(i['country'], 'rgba(' + (((i['deaths'] / (deathsMax * 0.1)) * 255) + 100) + ', ' + (((i['deaths'] / (deathsMax * 0.1)) * 1) + 100) + ', ' + (((i['deaths'] / (deathsMax * 0.1)) * 1) + 100) + ', 1)');
+                        recovered_fillColorsExp.push(i['country'], 'rgba(' + (((i['recovered'] / (recoveredMax * 0.05)) * 1) + 100) + ', ' + (((i['recovered'] / (recoveredMax * 0.05)) * 250) + 100) + ', ' + (((i['recovered'] / (recoveredMax * 0.05)) * 1) + 100) + ', 1)');
                     });
 
-                    map.setLayoutProperty('blocksx', 'text-field', [
-                        'format',
-                        ['get', 'alpha_3'],
-                        {
-                            'font-scale': map.getZoom() * 0.4,
+                    cases_fillColorsExp.push('rgba(0,0,0,0)');
+                    casesPerMill_fillColorsExp.push('rgba(0,0,0,0)');
+                    deaths_fillColorsExp.push('rgba(0,0,0,0)');
+                    recovered_fillColorsExp.push('rgba(0,0,0,0)');
 
-                        },
-                    ]);
+                    map = new mapboxgl.Map({
+                        container: 'map',
+                        style: 'mapbox://styles/irad/ck87k1rwe0xpk1inmngyd5vow',
+                        center: [0, 25],
+                        minZoom: 1,
+                        maxZoom: 4,
+                        zoom: 1.9
+                    });
 
-                    setInterval(function () { //UPDATE LAYER
+                    map.on('load', function () {  // EVENT
+
+                        map.addSource('mapMain', {
+                            type: 'vector',
+                            url: _mapSourceUrl
+                        });
+
+                        map.addLayer({
+                            'id': 'blocks_black',
+                            'type': 'fill',
+                            'source': 'mapMain',
+                            'source-layer': _sourceLayer,
+                            'paint': {
+                                'fill-color': 'rgba(77,77,97,1)',
+                            }
+                        });
+
+                        map.addLayer({
+                            'id': 'cases_BlocksFillColorLayer',
+                            'type': 'fill',
+                            'source': 'mapMain',
+                            'source-layer': _sourceLayer,
+                            'paint': {
+                                'fill-color': cases_fillColorsExp,
+                            }
+                        });
+
+                        map.addLayer({
+                            'id': 'casesPerMill_BlocksFillColorLayer',
+                            'type': 'fill',
+                            'source': 'mapMain',
+                            'source-layer': _sourceLayer,
+                            'paint': {
+                                'fill-color': casesPerMill_fillColorsExp,
+                            }
+                        });
+
+                        map.addLayer({
+                            'id': 'deaths_BlocksFillColorLayer',
+                            'type': 'fill',
+                            'source': 'mapMain',
+                            'source-layer': _sourceLayer,
+                            'paint': {
+                                'fill-color': deaths_fillColorsExp,
+                            }
+                        });
+
+                        map.addLayer({
+                            'id': 'recovered_BlocksFillColorLayer',
+                            'type': 'fill',
+                            'source': 'mapMain',
+                            'source-layer': _sourceLayer,
+                            'paint': {
+                                'fill-color': recovered_fillColorsExp,
+                            }
+                        });
+
+                        map.setLayoutProperty('casesPerMill_BlocksFillColorLayer', 'visibility', 'none');
+                        map.setLayoutProperty('deaths_BlocksFillColorLayer', 'visibility', 'none');
+                        map.setLayoutProperty('recovered_BlocksFillColorLayer', 'visibility', 'none');
+
+                        map.addLayer({
+                            'id': 'blocksx',
+                            'type': 'symbol',
+                            'source': 'mapMain',
+                            'source-layer': _sourceLayer,
+                            'paint': {
+                                "text-color": "#111111"
+                            }
+                        });
 
                         map.setLayoutProperty('blocksx', 'text-field', [
                             'format',
                             ['get', 'alpha_3'],
                             {
                                 'font-scale': map.getZoom() * 0.4,
-                            },
 
+                            },
                         ]);
 
-                    }, 50);
+                        setInterval(function () { //UPDATE LAYER
 
-                    map.setPaintProperty('blocksx', 'text-opacity', .9);
+                            map.setLayoutProperty('blocksx', 'text-field', [
+                                'format',
+                                ['get', 'alpha_3'],
+                                {
+                                    'font-scale': map.getZoom() * 0.4,
+                                },
 
-                    // POPUP ->
-                    let popup = new mapboxgl.Popup({
-                        closeButton: false,
-                        closeOnClick: false
-                    });
+                            ]);
 
-                    map.on('mousemove', 'blocks_black', function (e) {
+                        }, 50);
 
-                        map.getCanvas().style.cursor = 'pointer';
+                        map.setPaintProperty('blocksx', 'text-opacity', .9);
 
-                        let htmlContainer = '';
+                        // POPUP ->
+                        let popup = new mapboxgl.Popup({
+                            closeButton: false,
+                            closeOnClick: false
+                        });
 
-                        let cursor_todayCases = 'Нет данных';
-                        let cursor_casesPerOneMillion = 'Нет данных';
-                        let cursor_totalDeaths = 'Нет данных';
-                        let cursor_todayDeaths = 'Нет данных';
-                        let cursor_recovered = 'Нет данных';
-                        let cursor_critical = 'Нет данных';
-                        let cursor_active = 'Нет данных';
-                        let cursor_totalCases = 'Нет данных';
+                        map.on('mousemove', 'blocks_black', function (e) {
 
-                        let countryName = e.features[0].properties["corona_c_1"] + "&nbsp"
+                            map.getCanvas().style.cursor = 'pointer';
 
-                        let flagurl = '';
+                            let htmlContainer = '';
 
-                        data.forEach(function (row) {
+                            let cursor_todayCases = 'Нет данных';
+                            let cursor_casesPerOneMillion = 'Нет данных';
+                            let cursor_totalDeaths = 'Нет данных';
+                            let cursor_todayDeaths = 'Нет данных';
+                            let cursor_recovered = 'Нет данных';
+                            let cursor_critical = 'Нет данных';
+                            let cursor_active = 'Нет данных';
+                            let cursor_totalCases = 'Нет данных';
 
-                            if (row['country'] == e.features[0].properties['country']) {
+                            let countryName = e.features[0].properties["corona_c_1"] + "&nbsp"
 
-                                cursor_todayCases = row['todayCases'];
-                                cursor_casesPerOneMillion = row['casesPerOneMillion'];
-                                cursor_totalDeaths = row['deaths'];
-                                cursor_todayDeaths = row['todayDeaths'];
-                                cursor_recovered = row['recovered'];
-                                cursor_critical = row['critical'];
-                                cursor_totalCases = row['cases']
-                                cursor_active = row['active'];
+                            let flagurl = '';
 
-                                cursor_flagurl = row['countryInfo']['flag']
-                            }
+                            data.forEach(function (row) {
+
+                                if (row['country'] == e.features[0].properties['country']) {
+
+                                    cursor_todayCases = row['todayCases'];
+                                    cursor_casesPerOneMillion = row['casesPerOneMillion'];
+                                    cursor_totalDeaths = row['deaths'];
+                                    cursor_todayDeaths = row['todayDeaths'];
+                                    cursor_recovered = row['recovered'];
+                                    cursor_critical = row['critical'];
+                                    cursor_totalCases = row['cases']
+                                    cursor_active = row['active'];
+
+                                    cursor_flagurl = row['countryInfo']['flag']
+                                }
+
+                            });
+
+                            htmlContainer = `<div class=\"popup_back\">${countryName}</div>
+                                                <table class="pupupTable">
+                                                <tr class="popupLargeText"><th>Заражения</th></tr>
+                                                <tr class="popupSmallText"><th>Всего: </th><th>${cursor_totalCases}</th></tr>
+                                                <tr class="popupSmallText"><th>Сегодня: </th><th>${cursor_todayCases}</th></tr>
+                                                <tr class="popupSmallText"><th>на 1 млн: </th><th>${cursor_casesPerOneMillion}</th></tr>
+                                                <tr><th> </th></tr>
+                                                <tr><th> </th></tr>
+                                                <tr class="popupLargeTextDeaths"><th>Смерти</th></tr>
+                                                <tr class="popupSmallText"><th>Всего: </th><th>${cursor_totalDeaths}</th></tr>
+                                                <tr class="popupSmallText"><th>Сегодня: </th><th>${cursor_todayDeaths}</th></tr>
+                                                <tr><th></th></tr>
+                                                <tr class="popupSmallTextRecovered"><th>Излечились: </th><th>${cursor_recovered}</th></tr>
+                                                </table>`
+
+
+
+
+
+                            popup.setLngLat(e.lngLat).setHTML(htmlContainer).addTo(map);
 
                         });
 
-                        htmlContainer = `<div class=\"popup_back\">${countryName}</div>
-                    <table class="pupupTable">
-                    <tr class="popupLargeText"><th>заражений</th></tr>
-                    <tr class="popupSmallText"><th>всего: </th><th>${cursor_totalCases}</th></tr>
-                    <tr class="popupSmallText"><th>сегодня: </th><th>${cursor_todayCases}</th></tr>
-                    <tr class="popupSmallText"><th>на 1 млн: </th><th>${cursor_casesPerOneMillion}</th></tr>
-                    <tr><th> </th></tr>
-                    <tr><th> </th></tr>
-                    <tr class="popupLargeTextDeaths"><th>смертей</th></tr>
-                    <tr class="popupSmallText"><th>всего: </th><th>${cursor_totalDeaths}</th></tr>
-                    <tr class="popupSmallText"><th>сегодня: </th><th>${cursor_todayDeaths}</th></tr>
-                    <tr><th></th></tr>
-                    <tr class="popupSmallTextRecovered"><th>Излечились: </th><th>${cursor_recovered}</th></tr>
-                    </table>`
+                        map.on('mouseleave', 'blocks_black', function () {
+                            map.getCanvas().style.cursor = '';
+                            popup.remove();
+                        });
 
-
-
-
-
-                        popup.setLngLat(e.lngLat).setHTML(htmlContainer).addTo(map);
 
                     });
+                    console.log(totalCases)
+                }
 
-                    map.on('mouseleave', 'blocks_black', function () {
-                        map.getCanvas().style.cursor = '';
-                        popup.remove();
-                    });
+                if (isEvent) {
+
+                    if (eventHandler.value === '1') {
+
+                        map.setLayoutProperty('cases_BlocksFillColorLayer', 'visibility', 'visible');
+                        map.setLayoutProperty('casesPerMill_BlocksFillColorLayer', 'visibility', 'none');
+                        map.setLayoutProperty('deaths_BlocksFillColorLayer', 'visibility', 'none');
+                        map.setLayoutProperty('recovered_BlocksFillColorLayer', 'visibility', 'none');
+
+                        document.getElementsByClassName('table_cases').item(0).textContent = totalCases
+                        document.getElementsByClassName('table_cases').item(0).style.color = "yellow"
+                        document.getElementsByClassName('grad').item(0).style.background = "linear-gradient(90deg, rgba(110,110,100,1), yellow)"
+                    }
+                    else if (eventHandler.value === '2') {
+
+                        map.setLayoutProperty('cases_BlocksFillColorLayer', 'visibility', 'none');
+                        map.setLayoutProperty('casesPerMill_BlocksFillColorLayer', 'visibility', 'visible');
+                        map.setLayoutProperty('deaths_BlocksFillColorLayer', 'visibility', 'none');
+                        map.setLayoutProperty('recovered_BlocksFillColorLayer', 'visibility', 'none');
+
+                        document.getElementsByClassName('table_cases').item(0).textContent = dataTotal["casesPerOneMillion"]
+                        document.getElementsByClassName('table_cases').item(0).style.color = "yellow"
+                        document.getElementsByClassName('grad').item(0).style.background = "linear-gradient(90deg, rgba(110,110,100,1), yellow)"
+                    }
+                    else if (eventHandler.value === '3') {
+                        map.setLayoutProperty('cases_BlocksFillColorLayer', 'visibility', 'none');
+                        map.setLayoutProperty('casesPerMill_BlocksFillColorLayer', 'visibility', 'none');
+                        map.setLayoutProperty('deaths_BlocksFillColorLayer', 'visibility', 'visible');
+                        map.setLayoutProperty('recovered_BlocksFillColorLayer', 'visibility', 'none');
+
+                        document.getElementsByClassName('table_cases').item(0).textContent = dataTotal["deaths"]
+                        document.getElementsByClassName('table_cases').item(0).style.color = "#ff756b"
+                        document.getElementsByClassName('grad').item(0).style.background = "linear-gradient(90deg, rgba(110,110,100,1), #ff756b)"
+                    }
+                    else if (eventHandler.value === '4') {
+                        map.setLayoutProperty('cases_BlocksFillColorLayer', 'visibility', 'none');
+                        map.setLayoutProperty('casesPerMill_BlocksFillColorLayer', 'visibility', 'none');
+                        map.setLayoutProperty('deaths_BlocksFillColorLayer', 'visibility', 'none');
+                        map.setLayoutProperty('recovered_BlocksFillColorLayer', 'visibility', 'visible');
+
+                        document.getElementsByClassName('table_cases').item(0).textContent = dataTotal["recovered"]
+                        document.getElementsByClassName('table_cases').item(0).style.color = "#6eff64"
+                        document.getElementsByClassName('grad').item(0).style.background = "linear-gradient(90deg, rgba(110,110,100,1), #6eff64)"
+                    }
 
 
-                });
-                console.log(totalCases)
+                }
+                else {
+                    // document.getElementsByClassName('table_yesterday').item(0).textContent = totalCases - totalCasesToday
+                    document.getElementsByClassName('table_cases').item(0).textContent = totalCases
+                    //                   document.getElementsByClassName('table_date1').item(0).textContent = new Date(Date.now() - 86400000).toLocaleString().split(',')[0]
+                    document.getElementsByClassName('table_date2').item(0).textContent = new Date(Date.now()).toLocaleString().split(',')[0]
+                }
             }
 
-            if (isEvent) {
+            main(true, false);
 
-                if (eventHandler.value === '1') {
-
-                    map.setLayoutProperty('cases_BlocksFillColorLayer', 'visibility', 'visible');
-                    map.setLayoutProperty('casesPerMill_BlocksFillColorLayer', 'visibility', 'none');
-                    map.setLayoutProperty('deaths_BlocksFillColorLayer', 'visibility', 'none');
-                    map.setLayoutProperty('recovered_BlocksFillColorLayer', 'visibility', 'none');
-                }
-                else if (eventHandler.value === '2') {
-
-                    map.setLayoutProperty('cases_BlocksFillColorLayer', 'visibility', 'none');
-                    map.setLayoutProperty('casesPerMill_BlocksFillColorLayer', 'visibility', 'visible');
-                    map.setLayoutProperty('deaths_BlocksFillColorLayer', 'visibility', 'none');
-                    map.setLayoutProperty('recovered_BlocksFillColorLayer', 'visibility', 'none');
-                }
-                else if (eventHandler.value === '3') {
-                    map.setLayoutProperty('cases_BlocksFillColorLayer', 'visibility', 'none');
-                    map.setLayoutProperty('casesPerMill_BlocksFillColorLayer', 'visibility', 'none');
-                    map.setLayoutProperty('deaths_BlocksFillColorLayer', 'visibility', 'visible');
-                    map.setLayoutProperty('recovered_BlocksFillColorLayer', 'visibility', 'none');
-                }
-                else if (eventHandler.value === '4') {
-                    map.setLayoutProperty('cases_BlocksFillColorLayer', 'visibility', 'none');
-                    map.setLayoutProperty('casesPerMill_BlocksFillColorLayer', 'visibility', 'none');
-                    map.setLayoutProperty('deaths_BlocksFillColorLayer', 'visibility', 'none');
-                    map.setLayoutProperty('recovered_BlocksFillColorLayer', 'visibility', 'visible');
-                }
-
-
-            }
-            else {
-                document.getElementsByClassName('table_yesterday').item(0).textContent = totalCases - totalCasesToday
-                document.getElementsByClassName('table_today').item(0).textContent = totalCases
-                document.getElementsByClassName('table_date1').item(0).textContent = new Date(Date.now() - 86400000).toLocaleString().split(',')[0]
-                document.getElementsByClassName('table_date2').item(0).textContent = new Date(Date.now()).toLocaleString().split(',')[0]
-            }
-        }
-
-        main(true, false);
-
-    </script>
+        </script>
 
 </body>
 </html>
