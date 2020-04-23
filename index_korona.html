@@ -25,61 +25,53 @@
             font: 18px 'Futura New', Arial, Helvetica, sans-serif;
             color: #ffffff;
             position: absolute;
-            right: 0px;
+            right: 50px;
             overflow: auto;
             top: 17px;
             font-weight: bold;
             white-space: nowrap;
-            background-color: rgba(1,1,1,0.7);
+            background-color: rgba(55, 54, 70, 0.9);
             padding: 5px 10px 5px 10px;
         }
 
         .table_full {
-            top: 65px;
-
+            top: 40px;
             position: absolute;
-            padding: 0px 0px 20px 0px;
+            width: 50%;
+
         }
 
         .table_cases {
-            font: 30px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 40px 'Futura New', Arial, Helvetica, sans-serif;
             font-weight: bold;
             color: #fdfc4c;
-            position: relative;
+            position: absolute;
             text-align: right;
-            vertical-align:text-bottom;
-            padding: 0px 0px 0px 30px;
-        }
-        .table_death {
-            font: 30px 'Futura New', Arial, Helvetica, sans-serif;
-            font-weight: bold;
-            color: red;
-            position: relative;
-            text-align: right;
-            vertical-align:text-bottom;
-            padding: 0px 0px 0px 30px;
-        }
-
-        .table_date2 {
-            text-align: center;
-            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
-            color: #ffffff;
-            position: relative;
-            padding: 0px 0px 0px 5px;
             vertical-align: text-bottom;
+            padding: 0px 0px 0px 0px;
         }
 
         .table_txt {
             font: 14px 'Futura New', Arial, Helvetica, sans-serif;
             color: white;
-            padding-right: 5px;
+            padding: 10px 0px 0px 10px;
+            text-align: left;
             vertical-align: text-bottom;
+            position: relative;
+        }
+
+        .table_date2 {
+            text-align: left;
+            font: 14px 'Futura New', Arial, Helvetica, sans-serif;
+            color: #ffffff;
             padding: 0px 0px 0px 10px;
+            vertical-align: text-bottom;
+            position: relative;
         }
 
         .tablegrad {
             color: white;
-            top: 110px;
+            top: 80px;
             position: relative;
             margin-left: 0%;
             transform: translate(-50%, -50%,);
@@ -88,7 +80,10 @@
 
         .grad {
             background-image: linear-gradient(90deg, rgba(110,110,100,1), yellow);
-            width: 350px;
+            width: 265px;
+            margin-top: 2.78%;
+            float: left;
+            height: 5px;
         }
 
         .gradtxtleft {
@@ -149,11 +144,12 @@
     <style>
         /* POPUP MENU*/
         .popup_back {
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+
             font: 16px 'Futura New', Arial, Helvetica, sans-serif;
-            font-weight: bold;
+            font-weight: normal;
+            text-align: center;
             color: #ffffff;
-            text-align: left;
+            line-height: 180%;
         }
 
         .mapboxgl-popup {
@@ -161,21 +157,34 @@
             font: 16px 'Futura New', Arial, Helvetica, sans-serif;
             text-align: left;
             color: #fdfc4c;
+            font-weight: normal;
         }
 
         .mapboxgl-popup-content {
-            background-color: rgba(1,1,1,0.8);
+            background-color: rgba(55,54,70,0.9);
+            font-weight: normal;
         }
 
         .popupSmallText {
-            font: 16px 'Futura New', Arial, Helvetica, sans-serif;
+            font: 15px 'Futura New', Arial, Helvetica, sans-serif;
             font-weight: normal;
+            text-align: left;
             color: #ffffff;
+            line-height: 90%;
+        }
+
+        .popupSmallDigits {
+            font: 15px 'Futura New', Arial, Helvetica, sans-serif;
+            font-weight: normal;
+            text-align: right;
+            color: #ffffff;
+            line-height: 90%;
         }
 
         .popupSmallTextRecovered {
             font: 16px 'Futura New', Arial, Helvetica, sans-serif;
             color: #65c326;
+            line-height: 150%;
         }
 
         .popupLargeTextDeaths {
@@ -207,7 +216,7 @@
         .radioButton {
             position: absolute;
             right: 7px;
-            top: 35px;
+            top: 10px;
             white-space: nowrap;
         }
 
@@ -226,7 +235,7 @@
                 text-align: center;
                 vertical-align: middle;
                 cursor: pointer;
-                background-color: rgba(0,0,0,0.8);
+                background-color: rgba(55, 54, 70, 0.9);
                 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
                 filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
                 z-index: 999;
@@ -284,7 +293,7 @@
             display: flex; /* используем flex для центрирования содержимого */
             align-items: center; /* центрируем содержимое кнопки */
             position: fixed;
-            top: 50px;
+            top: 20px;
             right: 10px;
             width: 26px;
             height: 26px;
@@ -298,9 +307,10 @@
             .menu__btn > span::after {
                 display: block;
                 position: absolute;
-                width: 100%;
+                width: 25px;
                 height: 2px;
                 background-color: #ffffff;
+
             }
 
                 .menu__btn > span::before {
@@ -317,15 +327,14 @@
     <style>
         /* контейнер меню */
         .menu__box {
-            position: fixed;
+            position: absolute;
             visibility: hidden;
-            position: fixed;
             text-align: center;
             width: 346px;
-            height: 160px;
+            height: 130px;
             top: 50px;
-            background-color: rgba(1,1,1,0.7);
-            right: 0px;
+            background-color: rgba(55, 54, 70, 0.9);
+
         }
     </style>
     <style>
@@ -334,7 +343,7 @@
 
         #menu__toggle:checked ~ .menu__box {
             visibility: visible;
-            right: 0;
+            right: 50px;
         }
     </style>
 
@@ -362,20 +371,20 @@
 
             <table class="tablegrad">
                 <tr>
-                    <th class="gradtxtleft">min</th>
-                    <th class="grad"></th>
-                    <th class="gradtxright">max</th>
+                    <td class="gradtxtleft">min</td>
+                    <td class="grad"></td>
+                    <td class="gradtxright">max</td>
                 </tr>
             </table>
 
             <table class="table_full">
                 <tr>
                     <td class="table_txt">Всего&nbsp;на</td>
-                    <td class="table_date2">--/--</td>
-                    <th class="table_cases">--/--</th>
+                    <td class="table_cases"  rowspan="2">--/--</td>
                 </tr>
-
-
+               <tr>
+                    <td class ="table_date2"  >--/--</td>
+                </tr>
             </table>
 
 
@@ -484,7 +493,7 @@
             let dataTotal = [];
             let map;
 
-            async function main(firstRun, isEvent, eventHandler) {
+            async function main(firstRun, isEvent, eventHandler){
 
                 if (firstRun) {
                     data = await fetch('https://corona.lmao.ninja/v2/countries').then(response => response.json());
@@ -493,6 +502,16 @@
                     casesMaxValue = data[0].cases * intensy
 
                     mapboxgl.accessToken = _token;
+
+                    
+                    data.sort(function (a, b) {
+                        var keyA = new Date(a.cases),
+                            keyB = new Date(b.cases);
+                        // Compare the 2 dates
+                        if (keyA > keyB) return -1;
+                        if (keyA < keyB) return 1;
+                        return 0;
+                    });
 
                     data.forEach(function (i) {
 
@@ -526,9 +545,11 @@
 
                         totalCases = totalCases + i['cases']
                         totalCasesToday = totalCasesToday + i['todayCases']
-
-                        cases_fillColorsExp.push(i['country'], 'rgba(' + (((i['cases'] / (data[0]['cases'] * 1)) * 10) + 100) + ', ' + (((i['cases'] / (data[0]['cases'] * 1)) * 10) + 100) + ', ' + 100 + ', 1)');
-                        casesPerMill_fillColorsExp.push(i['country'], 'rgba(' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.01)) * 10) + 100) + ', ' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.01)) * 10) + 100) + ', '+ 100 + ', 1)');
+                        // R 100 G 100 B 100
+                        // R 255 G 255 B 80
+                        cases_fillColorsExp.push(i['country'], 'rgba(' + (100+((100*i['cases']/data[0]['cases'])+i['cases']*0.002)) + ',' + (100+((100*i['cases']/data[0]['cases'])+i['cases']*0.002)) + ',' + (100 - i['cases']*1) + ', 1)');
+               //OLD     //cases_fillColorsExp.push(i['country'], 'rgba(' + (((i['cases'] / (data[0]['cases'] * 0.004)) * 10) + 100) + ',' + (((i['cases'] / (data[0]['cases'] * 0.004)) * 10) + 100) + ',' + (100 - ((i['cases'] / (data[0]['cases'] * 0.01)) * 35)) + ', 1)');
+                        casesPerMill_fillColorsExp.push(i['country'], 'rgba(' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.02)) * 10) + 100) + ',' + (((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.02)) * 10) + 100) + ',' + (100 - ((i['casesPerOneMillion'] / (casesPerOneMillMax * 0.01)) * 35)) + ', 1)');
                         deaths_fillColorsExp.push(i['country'], 'rgba(' + (((i['deaths'] / (deathsMax * 0.1)) * 255) + 100) + ', ' + (((i['deaths'] / (deathsMax * 0.1)) * 1) + 100) + ', ' + (((i['deaths'] / (deathsMax * 0.1)) * 1) + 100) + ', 1)');
                         recovered_fillColorsExp.push(i['country'], 'rgba(' + (((i['recovered'] / (recoveredMax * 0.05)) * 1) + 100) + ', ' + (((i['recovered'] / (recoveredMax * 0.05)) * 250) + 100) + ', ' + (((i['recovered'] / (recoveredMax * 0.05)) * 1) + 100) + ', 1)');
                     });
@@ -543,7 +564,7 @@
                         style: 'mapbox://styles/irad/ck87k1rwe0xpk1inmngyd5vow',
                         center: [0, 25],
                         minZoom: 1,
-                        maxZoom: 4,
+                        maxZoom: 3,
                         zoom: 1.9
                     });
 
@@ -560,7 +581,7 @@
                             'source': 'mapMain',
                             'source-layer': _sourceLayer,
                             'paint': {
-                                'fill-color': 'rgba(77,77,97,1)',
+                                'fill-color': 'rgba(56,55,71,1)', //NO DATA
                             }
                         });
 
@@ -687,17 +708,19 @@
 
                             htmlContainer = `<div class=\"popup_back\">${countryName}</div>
                                                 <table class="pupupTable">
-                                                <tr class="popupLargeText"><th>Заражения</th></tr>
-                                                <tr class="popupSmallText"><th>Всего: </th><th>${cursor_totalCases}</th></tr>
-                                                <tr class="popupSmallText"><th>Сегодня: </th><th>${cursor_todayCases}</th></tr>
-                                                <tr class="popupSmallText"><th>на 1 млн: </th><th>${cursor_casesPerOneMillion}</th></tr>
-                                                <tr><th> </th></tr>
-                                                <tr><th> </th></tr>
-                                                <tr class="popupLargeTextDeaths"><th>Смерти</th></tr>
-                                                <tr class="popupSmallText"><th>Всего: </th><th>${cursor_totalDeaths}</th></tr>
-                                                <tr class="popupSmallText"><th>Сегодня: </th><th>${cursor_todayDeaths}</th></tr>
-                                                <tr><th></th></tr>
-                                                <tr class="popupSmallTextRecovered"><th>Излечились: </th><th>${cursor_recovered}</th></tr>
+                                                <tr class="popupLargeText"><th>ЗАРАЖЕНИЯ</td></td>
+                                                <tr class="popupSmallText"><td>Всего: </td><td class="popupSmallDigits">${cursor_totalCases}</td></tr>
+                                                <tr class="popupSmallText"><td>Сегодня: </td><td class="popupSmallDigits">${cursor_todayCases}</td></tr>
+                                                <tr class="popupSmallText"><td>на 1 млн: </td><td class="popupSmallDigits">${cursor_casesPerOneMillion}</td></tr>
+                                                <tr><td> </td></tr>
+                                                <tr><td> </td></tr>
+                                                <tr class="popupLargeTextDeaths"><th>СМЕРТИ</th></tr>
+                                                <tr class="popupSmallText"><td>Всего: </td><td class="popupSmallDigits">${cursor_totalDeaths}</td></tr>
+                                                <tr class="popupSmallText"><td>Сегодня: </td><td class="popupSmallDigits">${cursor_todayDeaths}</td></tr>
+                                                <tr><td></td></tr>
+                                                <tr class="popupSmallTextRecovered"><th>ИЗЛЕЧИЛИСЬ</th></tr>
+                                                <tr class="popupSmallText"><td>Всего: </td><td class="popupSmallDigits">${cursor_recovered}</td></tr>
+
                                                 </table>`
 
 
