@@ -532,8 +532,8 @@
             async function main(firstRun, isEvent, eventHandler){
 
                 if (firstRun) {
-                    data = await fetch('https://corona.lmao.ninja/v2/countries').then(response => response.json());
-                    dataTotal = await fetch('https://corona.lmao.ninja/v2/all').then(response => response.json());
+                    data = await fetch('https://disease.sh/v3/covid-19/countries').then(response => response.json());
+                    dataTotal = await fetch('https://disease.sh/v3/covid-19/all').then(response => response.json());
 
                     casesMaxValue = data[0].cases * intensy
 
